@@ -1,4 +1,4 @@
-.App {
+.Biko {
   text-align: center;
 }
 
@@ -7,14 +7,50 @@
   pointer-events: none;
 }
 
+.Biko-side-menu-expanded {
+  float: left;
+  height: 100vh;
+  width: 40vw;
+  background-color: #612b15;
+}
+
+.Login-menu {
+  float: right;
+  padding: 10px 15px;
+  height: 10vh;
+  background-color: #612b15;
+  font-size: calc(10px + 1vmin);
+}
+
+.Biko-side-menu {
+  border: none;
+  height: 10vh;
+  float: left;
+  padding: 10px 15px;
+  background-color: #612b15;
+}
+
+.three-lines {
+  height: 55px;
+  background-color: #612b15;
+}
+
+.Biko-side-menu:hover {
+  background-color: #d6b894;
+  
+  .three-lines {
+    background-color: #d6b894;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.Biko-header {
+  /*background-color: #d6b894;/*#282c34;*/
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +58,13 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.Biko-top-menu {
+  background-color: #612b15;
+  height: 10vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .App-link {
