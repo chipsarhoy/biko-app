@@ -32,8 +32,10 @@
 }
 
 .three-lines {
-  height: 55px;
+  height: 8vh;
   background-color: #612b15;
+  margin-bottom: 5vh;  
+  overflow: "hidden";
 }
 
 .Biko-side-menu:hover {
