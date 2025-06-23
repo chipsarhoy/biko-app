@@ -1,5 +1,6 @@
 .Biko {
   text-align: center;
+  overflow-x: hidden;
 }
 
 .App-logo {

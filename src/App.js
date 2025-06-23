@@ -24,21 +24,34 @@ function Button( { className, onClick, children}) {
  * @returns HTML div tag that encompasses the top horizontal menu of the application
  */
 function BikoTopMenu({onBikoSideMenu}) {
-  
-  const [isMaximized, setIsMaximized] = useState(true);
+  const fullscreen = (window.screen.width === window.outerWidth && window.outerHeight === window.screen.height);
+  const [isMaximized, setIsMaximized] = useState((window.screen.width === window.outerWidth && window.outerHeight === window.screen.height) ? false : true);
   let sideMenuToggle;
+  console.log(isMaximized);
+    
+  function actualResizeHandler() {
+    console.log((fullscreen) ? false : true);
+    setIsMaximized((fullscreen) ? false : true);
+  }
   
-  window.addEventListener('resize', function(){setIsMaximized(!isMaximized);});
-  
-  if(!isMaximized) {
-    sideMenuToggle = null;
-  } else{
-    sideMenuToggle= (<Button className="Biko-side-menu" onClick={onBikoSideMenu}>
+  function resizeThrottler(fn, limit) {
+    let inThrottle;
+    return (...args) => {
+      if (inThrottle) return;
+        fn.apply(this, args); 
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+    }
+  }
+
+  window.addEventListener('resize', resizeThrottler(actualResizeHandler, 10000));
+
+  (!isMaximized) ? sideMenuToggle = null : sideMenuToggle= (
+    <Button className="Biko-side-menu" onClick={onBikoSideMenu}> 
       <img src={menu} className="three-lines" alt="menu"/>
     </Button>
-    );
-  }
-//
+  );
+  
   return (
   <div className="Biko-top-menu">
     {sideMenuToggle}
@@ -51,7 +64,8 @@ function BikoTopMenu({onBikoSideMenu}) {
  * @returns Entire HTML page of the Biko application
  */
 function Biko() {
-    
+  
+  // This state hook is to keep track if the side menu is expanded when the browser is not in fullscreen mode
   const [isExpanded, setIsExpanded] = useState(false);
   
   function sideMenuExpand() {
@@ -59,17 +73,17 @@ function Biko() {
   }
 
   let sideMenu;
-  let bikoTopMenu = <BikoTopMenu onBikoSideMenu={() => sideMenuExpand} />;
+  let bikoTopMenu = <BikoTopMenu onBikoSideMenu={sideMenuExpand} />;
 
-  if(isExpanded === true) {
+  if(isExpanded) {
    sideMenu = <BikoSideMenu/>;
   }
 
   return (
     <div className="Biko">
-      {bikoTopMenu}
+      {bikoTopMenu}      
       {sideMenu}
-      
+
       <header className="Biko-header">
         <h1>Biko.com</h1>
         
