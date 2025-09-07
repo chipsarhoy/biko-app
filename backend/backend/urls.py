@@ -25,8 +25,8 @@ urlpatterns = [
     path('menu/add/', views.addMenuItem),
     path('createCustomer/', views.postCustomer),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    re_path(r'^auth/', include('djoser.urls')),
-    #re_path(r'^auth/', include('djoser.urls.auth')),    
+    path('authentication/', views.CookieAuthenticationView.as_view()),
+    re_path(r'^auth/', include('djoser.urls')),    
     re_path(r'^auth/', include('djoser.urls.jwt')),
 ]
     #path('myapp/', include("myapp.urls")),    

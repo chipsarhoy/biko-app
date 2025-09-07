@@ -13,7 +13,6 @@ import BikoLoginForm from './Components/BikoLoginForm.jsx';
 function Biko() {
 
   const [sideMenu, setSideMenu] = useState(null);
-  
   const isExpanded = () => {
     sideMenu === null ? setSideMenu(<BikoSideMenu/>) : setSideMenu(null);
   }

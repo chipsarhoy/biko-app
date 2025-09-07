@@ -1,6 +1,6 @@
 {
-  "short_name": "Biko App",
-  "name": "Biko.com",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",

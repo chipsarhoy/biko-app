@@ -3,8 +3,8 @@ import {useState, useEffect} from 'react';
 function BikoMenuDisplay() {
   const [content, setContent] = useState([]);
 
-  const fetchData = () => {
-    fetch("http://localhost:8000")
+  async function fetchData() {
+    await fetch("http://localhost:8000")
       .then((response) => response.json())
       .then((data) => setContent(data))
       .catch((error) => console.log(error));
@@ -25,9 +25,11 @@ function BikoMenuDisplay() {
   return content.length > 0 ?(
     <table>
       <thead>
-        <th>Name</th>              
-        <th>Price</th>
-        <th>Description</th>
+        <tr>
+          <th>Name</th>              
+          <th>Price</th>
+          <th>Description</th>
+        </tr>
       </thead>
       <tbody>
         {listMenu}
