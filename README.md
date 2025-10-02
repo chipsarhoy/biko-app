@@ -12,7 +12,7 @@ Independent project created to learn Django Rest Framework, React, and Bootstrap
 small Filipino Dessert business specializing on a Filipino rice cake dessert known as Biko.
 
 ## Most Updated Demo
-(![Biko-AppDevelopmentDemo-1-ezgif com-crop](https://github.com/user-attachments/assets/94ab731a-9581-43f4-b4b8-6d5aaeaa9326)
+![Biko-AppDevelopmentDemo-1-ezgif com-crop](https://github.com/user-attachments/assets/94ab731a-9581-43f4-b4b8-6d5aaeaa9326)
 
 
 ## Current Update
