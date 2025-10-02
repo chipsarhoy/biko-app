@@ -17,5 +17,6 @@ Will soon implement bootstrap to handle styling for cross device compatability a
 view to view and fulfill orders and transactions.
 
 ## Developer 
+For any questions, please email
 Rhoy Oviedo
 rhoy.oviedo@yahoo.com
