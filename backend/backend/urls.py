@@ -23,11 +23,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.getMenu),
     path('menu/add/', views.addMenuItem),
-    path('createCustomer/', views.postCustomer),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('newOrder/', views.postNewOrder),
     path('authentication/', views.CookieAuthenticationView.as_view()),
-    re_path(r'^auth/', include('djoser.urls')),    
-    re_path(r'^auth/', include('djoser.urls.jwt')),
+    path('logout/', views.Logout.as_view()),
+    path('authentication/refresh/', views.AuthenticationRefreshView.as_view()),
 ]
     #path('myapp/', include("myapp.urls")),    
     

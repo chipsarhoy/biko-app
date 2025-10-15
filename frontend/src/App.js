@@ -4,8 +4,8 @@ import BikoSideMenu from './Components/BikoSideMenu.jsx';
 import BikoTopMenu from './Components/BikoTopMenu.jsx';
 import BikoMenuDisplay from './Components/BikoMenuDisplay.jsx';
 import BikoLoginForm from './Components/BikoLoginForm.jsx';
-
-
+import BikoLogout from './Components/BikoLogout.jsx';
+import BikoMenuSelect from './Components/BikoMenuSelect.jsx';
 /**
  * Biko Web Application Component
  * @returns Entire HTML page of the Biko application
@@ -17,17 +17,31 @@ function Biko() {
     sideMenu === null ? setSideMenu(<BikoSideMenu/>) : setSideMenu(null);
   }
 
-  return (
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+   
+  return !isLoggedIn ? (
     <div className="Biko">
 
       <BikoTopMenu onBikoSideMenu={isExpanded}/>     
       {sideMenu}
       <h1>Biko.com</h1>
       <div>
-        <BikoMenuDisplay />
-        <BikoLoginForm />
+        <BikoMenuDisplay isLoggedIn={isLoggedIn}/>
+        <BikoLoginForm setIsLoggedIn={(setIsLoggedIn)}/>
       </div>
       
+    </div>
+  ) : (
+    <div className="Biko">
+
+      <BikoTopMenu onBikoSideMenu={isExpanded}/>     
+      {sideMenu}
+      <h1>Biko.com</h1>
+        <BikoMenuSelect isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+        <BikoLogout setIsLoggedIn={setIsLoggedIn}/>
+      <div>
+        
+      </div>
     </div>
   );
   /*return (
