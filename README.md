@@ -14,11 +14,11 @@ small Filipino Dessert business specializing on a Filipino rice cake dessert kno
 ## Most Updated Demo
 ![Biko-AppDevelopmentDemo-1-ezgif com-crop](https://github.com/user-attachments/assets/94ab731a-9581-43f4-b4b8-6d5aaeaa9326)
 
+## [View Version History here!](CHANGELOG.md)
 
 ## Current Update
-Steadily working on the user views for ordering and selecting menu items, prioritizing functionality over styling.
-Will soon implement bootstrap to handle styling for cross device compatability and also integrate an admin/business
-view to view and fulfill orders and transactions.
+Functionality of ordering and selecting menu items have been successfully implemented. Will refactor code files to
+have cleaner, maintainable code organization according to best practices. Will soon implement bootstrap to handle styling for cross device compatability and also integrate a view for admin/business to view and fulfill orders and transactions.
 
 ## Developer 
 For any questions, please email:  
