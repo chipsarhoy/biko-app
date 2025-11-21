@@ -1,5 +1,15 @@
 # Version History
 
+## [1.0.3] 2025-11-21
+
+### Added
+- Subtotal price projected display
+- Registering a new account
+
+### Updated
+- Significantly refactored most project files/code into organized files and thus better adhering to separation of concerns
+- Selecting menu items by quantity for better dynamic selection instead of single-clicking buttons
+
 ## [1.0.2] 2025-10-15
 
 ### Added
