@@ -12,14 +12,12 @@ Independent project created to learn Django Rest Framework, React, and Bootstrap
 small Filipino Dessert business specializing on a Filipino rice cake dessert known as Biko.
 
 ## Most Updated Demo
-![Biko-AppDevelopmentDemo-1-ezgif com-crop](https://github.com/user-attachments/assets/94ab731a-9581-43f4-b4b8-6d5aaeaa9326)
+![Untitled-2025-10-01 19 52 54(copy)-2025-10-01 19 58 42(copy)](https://github.com/user-attachments/assets/ba632b27-4e74-47d0-a992-451fcbe73373)
 
 ## [View Version History here!](CHANGELOG.md)
 
 ## Current Update
-Functionality of ordering and selecting menu items have been successfully implemented. Will refactor code files to
-have cleaner, maintainable code organization according to best practices. Will soon implement bootstrap to handle styling for cross device compatability and also integrate a view for admin/business to view and fulfill orders and transactions.
-
+Functionality of ordering, selecting menu items, displaying accurate projected price subtotal, and registering a user has been successfully implemented. Will soon implement bootstrap to handle styling for cross-device compatability.
 ## Developer 
 For any questions, please email:  
 
