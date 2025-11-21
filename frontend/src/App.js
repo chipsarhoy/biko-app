@@ -1,11 +1,14 @@
 import './App.css';
-import {useState} from 'react';
-import BikoSideMenu from './Components/BikoSideMenu.jsx';
-import BikoTopMenu from './Components/BikoTopMenu.jsx';
-import BikoMenuDisplay from './Components/BikoMenuDisplay.jsx';
-import BikoLoginForm from './Components/BikoLoginForm.jsx';
-import BikoLogout from './Components/BikoLogout.jsx';
-import BikoMenuSelect from './Components/BikoMenuSelect.jsx';
+import { useState, useEffect } from 'react';
+import { MenuDataProvider } from './contexts/BikoMenuContext.jsx';
+import { useToggleForm } from './contexts/BikoAuthToggleContext.jsx';
+import BikoSideMenu from './components/BikoSideMenu.jsx';
+import BikoTopMenu from './components/BikoTopMenu.jsx';
+import BikoMenuDisplay from './components/BikoMenuDisplay.jsx';
+import BikoRegisterAccountForm from './components/BikoRegisterAccountForm.jsx';
+import BikoLoginForm from './components/BikoLoginForm.jsx';
+import BikoLogout from './components/BikoLogout.jsx';
+import BikoOrderForm from './components/BikoOrderForm.jsx';
 /**
  * Biko Web Application Component
  * @returns Entire HTML page of the Biko application
@@ -13,36 +16,39 @@ import BikoMenuSelect from './Components/BikoMenuSelect.jsx';
 function Biko() {
 
   const [sideMenu, setSideMenu] = useState(null);
+  
   const isExpanded = () => {
     sideMenu === null ? setSideMenu(<BikoSideMenu/>) : setSideMenu(null);
   }
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { toggleForm, setToggleForm } = useToggleForm();
+  useEffect(() => {
+    setToggleForm(<BikoLoginForm setIsLoggedIn={setIsLoggedIn}/>)
+  }, []); 
    
-  return !isLoggedIn ? (
+  return (
+  <MenuDataProvider>
     <div className="Biko">
-
-      <BikoTopMenu onBikoSideMenu={isExpanded}/>     
-      {sideMenu}
-      <h1>Biko.com</h1>
-      <div>
+      {!isLoggedIn ? (
+        <>
+        <BikoTopMenu onBikoSideMenu={isExpanded}/>     
+        {sideMenu}
+        <h1>Biko.com</h1>      
         <BikoMenuDisplay isLoggedIn={isLoggedIn}/>
-        <BikoLoginForm setIsLoggedIn={(setIsLoggedIn)}/>
-      </div>
-      
-    </div>
-  ) : (
-    <div className="Biko">
-
-      <BikoTopMenu onBikoSideMenu={isExpanded}/>     
-      {sideMenu}
-      <h1>Biko.com</h1>
-        <BikoMenuSelect isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+        {toggleForm}
+        </>
+      ) : (
+        <>
+        <BikoTopMenu onBikoSideMenu={isExpanded}/>     
+        {sideMenu}
+        <h1>Biko.com</h1>
+        <BikoOrderForm isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
         <BikoLogout setIsLoggedIn={setIsLoggedIn}/>
-      <div>
-        
-      </div>
+        </>
+      )} 
     </div>
+  </MenuDataProvider>
   );
   /*return (
     <div className="Biko">

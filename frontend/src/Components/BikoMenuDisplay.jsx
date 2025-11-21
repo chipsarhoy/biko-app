@@ -1,34 +1,32 @@
 import BikoOrderQuantity from './BikoOrderQuantity.jsx';
-import {useState, useEffect} from 'react';
+//import {useState, useEffect} from 'react';
+import { useMenuData } from '../contexts/BikoMenuContext.jsx';
 
 function BikoMenuDisplay(props) {
-  const [content, setContent] = useState([]);
+  const menuContext = useMenuData();
+  if (!menuContext) {return null};
+  const { menuData } = useMenuData();
 
-  const fetchData = () => {
+  /*useEffect(() => {
     fetch("http://localhost:8000")
       .then((response) => response.json())
       .then((data) => setContent(data))
       .catch((error) => console.log(error));
-    };
+    }, []);*/
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  let listMenu;
-  content.length > 0 ? (
-    listMenu = content.map(item =>
-      <tr>
+  let listMenu = [];
+  if(menuData.length > 0) {
+    listMenu = menuData.map(item =>
+      <tr id={item.name}>
         <td>{item.name}</td>
         <td>{item.price}</td>
         <td>{item.description}</td>
         <td><BikoOrderQuantity quantity={props.quantity} setQuantity={props.setQuantity} item={item} isLoggedIn={props.isLoggedIn}/></td>
-      </tr> 
-    ) ) : (
-    listMenu
-  );
+      </tr>
+  )}
 
-  return content.length > 0 ? (
+  if(menuData.length > 0) {
+    return (
     <table>
       <thead>
         <tr>
@@ -41,9 +39,10 @@ function BikoMenuDisplay(props) {
         {listMenu}
       </tbody>
     </table>
-  ) : (
-    <h2>Menu Loading</h2>
-  );
+    );
+  }
+
+  return <h2>Menu Loading</h2>;
 }
 
 export default BikoMenuDisplay;

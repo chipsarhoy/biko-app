@@ -3,11 +3,10 @@ function BikoOrderQuantity(props) {
     function handleChange(e){
         const value = e.target.value;
         value < 100 && value > -1 ? (
-        props.setQuantity((prev) => ({...prev, [props.item.name] : value}))
-        ) : " "
+        props.setQuantity((prev) => ({...prev, [props.item.name] : value}))) : " ";
     }
 
-    function addItem() {
+    /*function addItem() {
         !(props.item.name in props.quantity) ? (
             props.setQuantity((prev) => ({...prev, [props.item.name] : 1})) ) : 
         ( props.quantity[props.item.name] < 99 ? 
@@ -18,14 +17,17 @@ function BikoOrderQuantity(props) {
     function subtractItem() {
         props.item.name in props.quantity && props.quantity[props.item.name] > 0 ? (
             props.setQuantity((prev) => ({...prev, [props.item.name] : parseInt((prev[props.item.name] || 1)) - 1})) ) : ''
-    }
+    }*/
 
     return props.isLoggedIn ? (
-        <>
-            <button onClick={addItem}>+</button>
-            <input type='text' value={props.quantity[props.item.name]} onChange={handleChange}/>
-            <button onClick={subtractItem}>-</button>
+        <>    
+        <input type='number' value={!props.quantity ? 0 : props.quantity[props.item.name]} onChange={handleChange}/>
         </>
+        /*<>
+            <button onClick={addItem}>+</button>*/
+        /*    <button onClick={subtractItem}>-</button>
+        </>*/
+        
     ) : null;
 }
 

@@ -3,7 +3,10 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from myapp.models import Customer, Menu, Order, OrderItems
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework import exceptions
+from django.contrib.auth import get_user_model
 from typing import Any
+
+User = get_user_model()
 
 class CookieAuthenticator(JWTAuthentication):
     def authenticate(self, request):
@@ -71,3 +74,11 @@ class CookieAuthenticationSerializer(TokenObtainPairSerializer):
         token = super().validate(attrs)
 
         return {'access': token.get('access'), 'refresh': token.get('refresh')}
+    
+class RegisterUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'password', 'email']
+
+    def create(self, validated_data):
+        return User.objects.create_user(username=validated_data['username'],password=validated_data['password'],email=validated_data['email'])

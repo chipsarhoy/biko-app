@@ -1,4 +1,4 @@
-import logout from './authentication/logout.js';
+import { logout } from '../auth.js';
 
 function BikoLogout(props) {
         
@@ -15,7 +15,7 @@ function BikoLogout(props) {
 
     return (
         <>
-        <button onClick={() => logout(props.setIsLoggedIn)}>Logout</button>
+        <button onClick={async () => await logout(props.setIsLoggedIn)}>Logout</button>
         </>
     );
 };
